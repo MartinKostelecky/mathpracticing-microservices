@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: service-registry
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+#    will not fetch the registry information from the Eureka server
+#    This is typically used in scenarios where the service does not need to discover other services,
+#    such as when the service itself is a Eureka server or when the service only needs to register itself
+#    without needing to know about other services
+    fetch-registry: false
+
+#    doesn't register service-registry with eureka
+    register-with-eureka: false

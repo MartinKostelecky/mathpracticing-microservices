@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+# no need to specify routes when locator enabled and lower case service id are set
+
+#      routes:
+#        - id: practicing-service
+#          uri: http://localhost:8090
+#          predicates:
+#            - Path=/practicing-service/**
+#          filters:
+#             - RewritePath=/practicing-service/(?<remaining>.*), /${remaining}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+server:
+  port: 8765
+
