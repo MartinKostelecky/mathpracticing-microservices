@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
 
-    <style>
-
+    <style th:inline="css">
         body {
-            background-image: url("/img/catbackground.jpg");
+            background-image: url('[[@{/img/catbackground.jpg}]]');
             /*background-color: #d1aaff; /* Pastel purple */
             margin: 0;
             display: flex;
@@ -88,11 +87,11 @@
 
     <div class="container">
         <h2 class="font-smaller">Vyber co chceš procvičovat</h2>
-        <form th:action="@{/practicing-service/practicing/addition}" method="post">
+        <form th:action="@{/practicing/addition}" method="post">
             <button type="submit">Sčítání +</button>
         </form>
         <br>
-        <form th:action="@{/practicing-service//practicing/subtraction}" method="post">
+        <form th:action="@{/practicing/subtraction}" method="post">
             <button type="submit">Odečítání -</button>
         </form>
     </div>

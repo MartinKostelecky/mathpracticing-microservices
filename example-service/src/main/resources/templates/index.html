@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Math Practicing App - Admin Section</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="d-flex justify-content-center">
+    <div class="container mt-4 text-center">
+        <h1>Math Practicing App - Admin Section</h1>
+
+        <form th:action="@{/examples}" method="post">
+            <button type="submit" class="btn btn-primary mt-3">Add or edit examples</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

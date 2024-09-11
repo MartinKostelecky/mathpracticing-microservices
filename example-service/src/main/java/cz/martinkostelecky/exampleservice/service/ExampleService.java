@@ -16,7 +16,7 @@ public interface ExampleService {
 
     List<Example> getExamplesByCategory(String category) throws ExampleNotFoundException;
 
-    Example updateExample(Example example) throws ExampleNotFoundException, ExampleAlreadyExistException;
+    void updateExample(Example example) throws ExampleNotFoundException, ExampleAlreadyExistException;
 
     void deleteExampleById(Long id);
 

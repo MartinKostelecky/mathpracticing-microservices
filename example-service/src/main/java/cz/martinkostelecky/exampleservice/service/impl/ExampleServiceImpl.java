@@ -48,7 +48,7 @@ public class ExampleServiceImpl implements ExampleService {
 
 
     @Override
-    public Example updateExample(Example example) throws ExampleNotFoundException, ExampleAlreadyExistException {
+    public void updateExample(Example example) throws ExampleNotFoundException, ExampleAlreadyExistException {
 
         Optional<Example> optionalExistingExample = exampleRepository.findById(example.getId());
         Boolean existByExampleTitle = exampleRepository.existByExampleTitle(example.getExampleTitle());
@@ -62,8 +62,11 @@ public class ExampleServiceImpl implements ExampleService {
             } else {
                 existingExample.setExampleTitle(example.getExampleTitle());
             }
+
+            existingExample.setCategory(example.getCategory());
             existingExample.setRightAnswer(example.getRightAnswer());
-            return exampleRepository.save(existingExample);
+
+            exampleRepository.save(existingExample);
         } else {
             throw new ExampleNotFoundException("Example not found!");
         }

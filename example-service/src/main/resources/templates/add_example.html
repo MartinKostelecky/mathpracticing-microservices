@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Practicing App - Admin Section</title>
+    <title>Math Practicing App - Admin Section - Add example</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-6">
             <h2 class="mb-4">Add an example</h2>
-            <form th:action="@{/example-service/examples}" th:object="${example}" method="post">
+            <form th:action="@{/add-example}" th:object="${example}" method="post">
                 <div class="form-group">
                     <label for="exampleTitle">Title</label>
                     <input type="text" class="form-control" id="exampleTitle" name="exampleTitle"
@@ -22,8 +22,10 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category"
-                           th:field="*{category}" required>
+                    <select th:field="*{category}" class="form-control" id="category">
+                        <option value="Sčítání">Sčítání</option>
+                        <option value="Odčítání">Odčítání</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="rightAnswer">Right Answer</label>

@@ -43,6 +43,7 @@ public class PracticingController {
     public String getAdditionPracticing(Model model) {
         //TODO get category already from template via Thymeleaf
         Example example = new Example();
+
         example.setCategory("Sčítání");
 
         Optional<Example> optionalExample = practicingService.getRandomExample(example);

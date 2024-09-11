@@ -2,7 +2,7 @@ spring:
   application:
     name: example-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/msmathquestionsdb
+    url: jdbc:postgresql://localhost:5432/msmathexamplesdb
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver
@@ -17,6 +17,7 @@ spring:
           format_sql: true
 
 server:
+  forward-headers-strategy: FRAMEWORK
   error:
     include-message: always
     include-binding-errors: always

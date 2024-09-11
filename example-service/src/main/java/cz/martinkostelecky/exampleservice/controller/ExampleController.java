@@ -19,17 +19,29 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-//@RequestMapping(value = "math_practicing/admin")
 public class ExampleController {
 
     private final ExampleService exampleService;
 
-    @RequestMapping(value = "/examples", method = RequestMethod.GET)
-    public String getAllExamples(Model model) {
-        model.addAttribute("examples", exampleService.getAllExamples());
-        return "examples";
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String renderIndexPage() {
+
+        return "index";
     }
 
+    @RequestMapping(value = "/examples", method = RequestMethod.POST)
+    public String handleExamplesPost() {
+
+        return "redirect:/examples";
+    }
+
+    @RequestMapping(value = "/examples", method = RequestMethod.GET)
+    public String getAllExamples(Model model) {
+
+        model.addAttribute("examples", exampleService.getAllExamples());
+
+        return "examples";
+    }
 
     @RequestMapping(value = "/add", method = GET)
     public String renderAddExamplesForm(Model model) {
@@ -40,17 +52,20 @@ public class ExampleController {
         return "add_example";
     }
 
-    @RequestMapping(value = "/examples", method = RequestMethod.POST)
+    @RequestMapping(value = "/add-example", method = RequestMethod.POST)
     public String addExample(@ModelAttribute("example") Example example) throws ExampleAlreadyExistException {
 
         exampleService.saveExample(example);
         log.info("Added example: {}", example);
+
         return "redirect:/examples";
     }
 
     @RequestMapping(value = "/examples/edit/{id}", method = GET)
     public String renderEditExample(@PathVariable Long id, Model model) throws ExampleNotFoundException {
+
         model.addAttribute("example", exampleService.getExampleById(id));
+
         return "edit_example";
     }
 
