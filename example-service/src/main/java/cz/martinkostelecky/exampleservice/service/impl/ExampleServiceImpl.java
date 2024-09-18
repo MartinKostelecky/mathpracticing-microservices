@@ -42,10 +42,9 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public List<Example> getExamplesByCategory(String category) throws ExampleNotFoundException {
-        //TODO Optional
-        return exampleRepository.findByCategory(category);
+        Optional<List<Example>> optionalExamples = Optional.ofNullable(exampleRepository.findByCategory(category));
+        return optionalExamples.orElseThrow(() -> new ExampleNotFoundException("Examples of category " + category + " not found!"));
     }
-
 
     @Override
     public void updateExample(Example example) throws ExampleNotFoundException, ExampleAlreadyExistException {
